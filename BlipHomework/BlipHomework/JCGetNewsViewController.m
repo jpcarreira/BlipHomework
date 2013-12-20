@@ -7,6 +7,7 @@
 //
 
 #import "JCGetNewsViewController.h"
+#import "RXMLElement.h"
 
 @interface JCGetNewsViewController ()
 
@@ -14,25 +15,29 @@
 
 @implementation JCGetNewsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    // testing RaptureXML lib with betfair.xml
+    RXMLElement *bootstrap = [RXMLElement elementFromXMLFile:@"betfair.xml"];
+    
+    [bootstrap iterate:@"channel.item" usingBlock: ^(RXMLElement *newsItem)
+     {
+         NSLog(@"Title: %@", [newsItem child:@"title"].text);
+         NSLog(@"Description: %@", [newsItem child:@"description"].text);
+         NSLog(@"Date: %@", [newsItem child:@"pubDate"].text);
+         NSLog(@"Link: %@", [newsItem child:@"link"].text);
+         NSLog(@"-------------------------------------------");
+     }
+     ];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

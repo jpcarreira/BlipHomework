@@ -25,6 +25,7 @@
 		622BFE201863B32B00746FB7 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE1F1863B32B00746FB7 /* RXMLElement.m */; };
 		622BFE221863B9CD00746FB7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 622BFE211863B9CD00746FB7 /* libz.dylib */; };
 		622BFE241863B9D700746FB7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 622BFE231863B9D700746FB7 /* libxml2.dylib */; };
+		622BFE2A1863BCE100746FB7 /* betfair.xml in Resources */ = {isa = PBXBuildFile; fileRef = 622BFE291863BCE100746FB7 /* betfair.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		622BFE211863B9CD00746FB7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		622BFE231863B9D700746FB7 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		622BFE251863BB2000746FB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		622BFE291863BCE100746FB7 /* betfair.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = betfair.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		622BFDE21863B16300746FB7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				622BFE261863BC0600746FB7 /* Bootstrap */,
 				622BFE1C1863B30D00746FB7 /* External */,
 				622BFDEA1863B16300746FB7 /* JCAppDelegate.h */,
 				622BFDEB1863B16300746FB7 /* JCAppDelegate.m */,
@@ -208,6 +211,14 @@
 				622BFE1F1863B32B00746FB7 /* RXMLElement.m */,
 			);
 			path = RaptureXML;
+			sourceTree = "<group>";
+		};
+		622BFE261863BC0600746FB7 /* Bootstrap */ = {
+			isa = PBXGroup;
+			children = (
+				622BFE291863BCE100746FB7 /* betfair.xml */,
+			);
+			name = Bootstrap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +301,7 @@
 				622BFDF71863B16300746FB7 /* Images.xcassets in Resources */,
 				622BFDE61863B16300746FB7 /* InfoPlist.strings in Resources */,
 				622BFDEF1863B16300746FB7 /* Main.storyboard in Resources */,
+				622BFE2A1863BCE100746FB7 /* betfair.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
