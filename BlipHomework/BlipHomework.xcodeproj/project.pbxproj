@@ -26,6 +26,7 @@
 		622BFE221863B9CD00746FB7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 622BFE211863B9CD00746FB7 /* libz.dylib */; };
 		622BFE241863B9D700746FB7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 622BFE231863B9D700746FB7 /* libxml2.dylib */; };
 		622BFE2A1863BCE100746FB7 /* betfair.xml in Resources */ = {isa = PBXBuildFile; fileRef = 622BFE291863BCE100746FB7 /* betfair.xml */; };
+		622BFE301863C69100746FB7 /* JCAllNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE2F1863C69100746FB7 /* JCAllNewsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		622BFE231863B9D700746FB7 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		622BFE251863BB2000746FB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		622BFE291863BCE100746FB7 /* betfair.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = betfair.xml; sourceTree = "<group>"; };
+		622BFE2E1863C69100746FB7 /* JCAllNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCAllNewsViewController.h; sourceTree = "<group>"; };
+		622BFE2F1863C69100746FB7 /* JCAllNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCAllNewsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,8 @@
 				622BFDF41863B16300746FB7 /* JCSecondViewController.m */,
 				622BFE161863B1FD00746FB7 /* JCGetNewsViewController.h */,
 				622BFE171863B1FD00746FB7 /* JCGetNewsViewController.m */,
+				622BFE2E1863C69100746FB7 /* JCAllNewsViewController.h */,
+				622BFE2F1863C69100746FB7 /* JCAllNewsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				622BFE301863C69100746FB7 /* JCAllNewsViewController.m in Sources */,
 				622BFDE81863B16300746FB7 /* main.m in Sources */,
 				622BFE181863B1FD00746FB7 /* JCGetNewsViewController.m in Sources */,
 				622BFDEC1863B16300746FB7 /* JCAppDelegate.m in Sources */,
