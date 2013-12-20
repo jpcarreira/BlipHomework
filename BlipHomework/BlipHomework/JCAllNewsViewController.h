@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class Reachability;
+
 @interface JCAllNewsViewController : UITableViewController
+{
+    Reachability *hostReachable;
+}
 
-
+-(void)checkConnection:(NSNotification *)notification;
 
 @end

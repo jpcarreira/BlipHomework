@@ -10,8 +10,10 @@
 #import "RXMLElement.h"
 #import "JCDownloadManager.h"
 #import "JCNewsItem.h"
+#import "Reachability.h"
 
 #define URL @"http://betting.betfair.com/index.xml"
+#define HOST @"http://betting.betfair.com"
 
 @interface JCAllNewsViewController ()
 
@@ -33,6 +35,40 @@ NSMutableArray *allNews;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    hostReachable = [Reachability reachabilityWithHostname:HOST];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                                    selector:@selector(checkConnection:)
+                                                    name:kReachabilityChangedNotification
+                                                    object:nil];
+    
+    [hostReachable startNotifier];
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+-(void)checkConnection:(NSNotification *)notification
+{
+    NetworkStatus hostStatus = [hostReachable currentReachabilityStatus];
+    
+    if(hostStatus == NotReachable)
+    {
+        NSLog(@"Cant connect to host");
+    }
+    else
+    {
+        NSLog(@"connected to host");
+    }
 }
 
 

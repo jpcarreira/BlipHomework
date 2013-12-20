@@ -28,6 +28,8 @@
 		622BFE301863C69100746FB7 /* JCAllNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE2F1863C69100746FB7 /* JCAllNewsViewController.m */; };
 		622BFE361863CB1E00746FB7 /* JCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE351863CB1E00746FB7 /* JCDownloadManager.m */; };
 		622BFE391863D04B00746FB7 /* JCNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE381863D04B00746FB7 /* JCNewsItem.m */; };
+		62B211981864829E007E4F0E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B211971864829E007E4F0E /* Reachability.m */; };
+		62B2119B18648B5A007E4F0E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B21199186482AF007E4F0E /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,9 @@
 		622BFE351863CB1E00746FB7 /* JCDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCDownloadManager.m; sourceTree = "<group>"; };
 		622BFE371863D04B00746FB7 /* JCNewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNewsItem.h; sourceTree = "<group>"; };
 		622BFE381863D04B00746FB7 /* JCNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNewsItem.m; sourceTree = "<group>"; };
+		62B211961864829E007E4F0E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		62B211971864829E007E4F0E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		62B21199186482AF007E4F0E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62B2119B18648B5A007E4F0E /* SystemConfiguration.framework in Frameworks */,
 				622BFE241863B9D700746FB7 /* libxml2.dylib in Frameworks */,
 				622BFE221863B9CD00746FB7 /* libz.dylib in Frameworks */,
 				622BFDDE1863B16300746FB7 /* CoreGraphics.framework in Frameworks */,
@@ -121,6 +127,7 @@
 		622BFDDA1863B16300746FB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				62B21199186482AF007E4F0E /* SystemConfiguration.framework */,
 				622BFE231863B9D700746FB7 /* libxml2.dylib */,
 				622BFE211863B9CD00746FB7 /* libz.dylib */,
 				622BFDDB1863B16300746FB7 /* Foundation.framework */,
@@ -209,6 +216,7 @@
 		622BFE1C1863B30D00746FB7 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				62B2119518648264007E4F0E /* Reachability */,
 				622BFE1D1863B32B00746FB7 /* RaptureXML */,
 			);
 			name = External;
@@ -229,6 +237,15 @@
 				622BFE291863BCE100746FB7 /* betfair.xml */,
 			);
 			name = Bootstrap;
+			sourceTree = "<group>";
+		};
+		62B2119518648264007E4F0E /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				62B211961864829E007E4F0E /* Reachability.h */,
+				62B211971864829E007E4F0E /* Reachability.m */,
+			);
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +349,7 @@
 			files = (
 				622BFE391863D04B00746FB7 /* JCNewsItem.m in Sources */,
 				622BFE301863C69100746FB7 /* JCAllNewsViewController.m in Sources */,
+				62B211981864829E007E4F0E /* Reachability.m in Sources */,
 				622BFDE81863B16300746FB7 /* main.m in Sources */,
 				622BFE361863CB1E00746FB7 /* JCDownloadManager.m in Sources */,
 				622BFE181863B1FD00746FB7 /* JCGetNewsViewController.m in Sources */,
