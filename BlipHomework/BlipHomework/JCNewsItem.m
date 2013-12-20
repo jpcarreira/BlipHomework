@@ -1,15 +1,15 @@
 //
-//  JCAllNewsViewController.h
+//  JCNewsItem.m
 //  BlipHomework
 //
 //  Created by João Carreira on 20/12/13.
 //  Copyright (c) 2013 João Carreira. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "JCNewsItem.h"
 
-@interface JCAllNewsViewController : UITableViewController
+@implementation JCNewsItem
 
-
+@synthesize title, description, datePublished, link;
 
 @end

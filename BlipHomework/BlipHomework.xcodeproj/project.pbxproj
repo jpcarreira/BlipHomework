@@ -28,6 +28,7 @@
 		622BFE2A1863BCE100746FB7 /* betfair.xml in Resources */ = {isa = PBXBuildFile; fileRef = 622BFE291863BCE100746FB7 /* betfair.xml */; };
 		622BFE301863C69100746FB7 /* JCAllNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE2F1863C69100746FB7 /* JCAllNewsViewController.m */; };
 		622BFE361863CB1E00746FB7 /* JCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE351863CB1E00746FB7 /* JCDownloadManager.m */; };
+		622BFE391863D04B00746FB7 /* JCNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE381863D04B00746FB7 /* JCNewsItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		622BFE2F1863C69100746FB7 /* JCAllNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCAllNewsViewController.m; sourceTree = "<group>"; };
 		622BFE341863CB1E00746FB7 /* JCDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCDownloadManager.h; sourceTree = "<group>"; };
 		622BFE351863CB1E00746FB7 /* JCDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCDownloadManager.m; sourceTree = "<group>"; };
+		622BFE371863D04B00746FB7 /* JCNewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNewsItem.h; sourceTree = "<group>"; };
+		622BFE381863D04B00746FB7 /* JCNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNewsItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +205,8 @@
 			children = (
 				622BFE341863CB1E00746FB7 /* JCDownloadManager.h */,
 				622BFE351863CB1E00746FB7 /* JCDownloadManager.m */,
+				622BFE371863D04B00746FB7 /* JCNewsItem.h */,
+				622BFE381863D04B00746FB7 /* JCNewsItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				622BFE391863D04B00746FB7 /* JCNewsItem.m in Sources */,
 				622BFE301863C69100746FB7 /* JCAllNewsViewController.m in Sources */,
 				622BFDE81863B16300746FB7 /* main.m in Sources */,
 				622BFE361863CB1E00746FB7 /* JCDownloadManager.m in Sources */,

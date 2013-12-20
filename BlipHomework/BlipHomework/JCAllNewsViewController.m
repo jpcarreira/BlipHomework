@@ -9,6 +9,7 @@
 #import "JCAllNewsViewController.h"
 #import "RXMLElement.h"
 #import "JCDownloadManager.h"
+#import "JCNewsItem.h"
 
 #define URL @"http://betting.betfair.com/index.xml"
 
@@ -18,6 +19,7 @@
 
 @implementation JCAllNewsViewController
 
+NSMutableArray *allNews;
 
 - (void)viewDidLoad
 {
@@ -29,7 +31,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -38,19 +39,29 @@
  */
 -(void)setupNews
 {
+    allNews = [[NSMutableArray alloc] initWithCapacity:10];
+    
     [JCDownloadManager downloadData:URL withCompletionBlock:^(NSData *result)
      {
          RXMLElement *xml = [RXMLElement elementFromXMLData:result];
+        
+         NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+         [dateFormater setDateFormat:@"EE, d LLLL yyyy HH:mm:ss Z"];
          
-         [xml iterate:@"channel.item" usingBlock: ^(RXMLElement *newsItem)
-          {
-              NSLog(@"Title: %@", [newsItem child:@"title"].text);
-              NSLog(@"Description: %@", [newsItem child:@"description"].text);
-              NSLog(@"Date: %@", [newsItem child:@"pubDate"].text);
-              NSLog(@"Link: %@", [newsItem child:@"link"].text);
-              NSLog(@"-------------------------------------------");
-          }
-          ];
+         NSArray *items = [[xml child:@"channel"] children:@"item"];
+         
+         for(RXMLElement *element in items)
+         {
+             JCNewsItem *news = [[JCNewsItem alloc] init];
+             news.title = [[element child:@"title"] text];
+             news.description = [[element child:@"description"] text];
+             news.datePublished = [dateFormater dateFromString: [[element child:@"pubDate"] text]];
+             NSLog(@"Data: %@", [[element child:@"pubDate"] text]);
+             news.link = [[element child:@"link"] text];
+             
+             [allNews addObject:news];
+         }
+         [self.tableView reloadData];
      }];
 }
 
@@ -59,77 +70,40 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [allNews count];
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell"];
+    JCNewsItem *newsItem = [allNews objectAtIndex: indexPath.row];
     
-    // Configure the cell...
+    // setting up the cells labels
+    [self configureCell:cell withNewsItem:newsItem];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+
+-(void)configureCell:(UITableViewCell *)cell withNewsItem:(JCNewsItem *)newsItem
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    UILabel *textLabel = (UILabel *)[cell viewWithTag:1000];
+    UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:1001];
+    UILabel *dateLabel = (UILabel *)[cell viewWithTag:1002];
+    
+     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:@"dd/MM/YY HH:mm"];
+    
+    textLabel.text = newsItem.title;
+    descriptionLabel.text = newsItem.description;
+    dateLabel.text = [dateFormater stringFromDate:newsItem.datePublished];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end
