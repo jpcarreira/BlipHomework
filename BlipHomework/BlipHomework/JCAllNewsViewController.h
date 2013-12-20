@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
 @class Reachability;
 
-@interface JCAllNewsViewController : UITableViewController
+@interface JCAllNewsViewController : UITableViewController<UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
 {
     Reachability *hostReachable;
 }

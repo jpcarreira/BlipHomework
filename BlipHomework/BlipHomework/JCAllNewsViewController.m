@@ -12,8 +12,9 @@
 #import "JCNewsItem.h"
 #import "Reachability.h"
 
+
 #define URL @"http://betting.betfair.com/index.xml"
-#define HOST @"http://betting.betfair.com"
+#define HOST @"http://betting.betfair.come"
 
 @interface JCAllNewsViewController ()
 
@@ -24,6 +25,8 @@
 // ivar to save all news downloaded from URL
 NSMutableArray *allNews;
 
+// ivar to check is user was already notified
+BOOL wasNotified = NO;
 
 - (void)viewDidLoad
 {
@@ -40,14 +43,16 @@ NSMutableArray *allNews;
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    hostReachable = [Reachability reachabilityWithHostname:HOST];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                                    selector:@selector(checkConnection:)
-                                                    name:kReachabilityChangedNotification
-                                                    object:nil];
-    
-    [hostReachable startNotifier];
+    if(wasNotified == NO)
+    {
+        wasNotified = YES;
+        hostReachable = [Reachability reachabilityWithHostname:HOST];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(checkConnection:)
+                                                     name:kReachabilityChangedNotification
+                                                   object:nil];
+        [hostReachable startNotifier];
+    }
 }
 
 
@@ -63,12 +68,62 @@ NSMutableArray *allNews;
     
     if(hostStatus == NotReachable)
     {
-        NSLog(@"Cant connect to host");
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Network Error!"
+                                                            message:@"Can't connect to host!"
+                                                            delegate:self
+                                                            cancelButtonTitle:@"Cancel"
+                                                            otherButtonTitles:@"Report", nil];
+        [alertView show];
     }
-    else
+}
+
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex != [alertView cancelButtonIndex])
     {
-        NSLog(@"connected to host");
+        MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
+        mailComposeViewController.mailComposeDelegate = self;
+        [mailComposeViewController setToRecipients:[NSArray arrayWithObject:@"jpmavcarreira@gmail.com"]];
+        [mailComposeViewController setSubject:@"Can't connect to Betfair!"];
+        NSString *msg = @"App is not working!";
+        [mailComposeViewController setMessageBody:msg isHTML:NO];
+        [self presentModalViewController:mailComposeViewController animated:YES];
     }
+}
+
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    NSString *messageToDisplay;
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            messageToDisplay = @"You cancelled the operation";
+            break;
+        case MFMailComposeResultSaved:
+            messageToDisplay = @"Mail saved in your drafts folder.";
+            break;
+        case MFMailComposeResultSent:
+            messageToDisplay = @"Mail sent";
+            break;
+        case MFMailComposeResultFailed:
+            messageToDisplay = @"Mail failed!";
+            break;
+        default:
+            NSLog(@"Mail not sent.");
+            break;
+    }
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Reporting problem"
+                                                        message:messageToDisplay
+                                                        delegate:nil
+                                                        cancelButtonTitle:@"Cancel"
+                                                        otherButtonTitles:nil];
+    
+    [alertView show];
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
