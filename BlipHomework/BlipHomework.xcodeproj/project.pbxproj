@@ -27,6 +27,7 @@
 		622BFE241863B9D700746FB7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 622BFE231863B9D700746FB7 /* libxml2.dylib */; };
 		622BFE2A1863BCE100746FB7 /* betfair.xml in Resources */ = {isa = PBXBuildFile; fileRef = 622BFE291863BCE100746FB7 /* betfair.xml */; };
 		622BFE301863C69100746FB7 /* JCAllNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE2F1863C69100746FB7 /* JCAllNewsViewController.m */; };
+		622BFE361863CB1E00746FB7 /* JCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE351863CB1E00746FB7 /* JCDownloadManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		622BFE291863BCE100746FB7 /* betfair.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = betfair.xml; sourceTree = "<group>"; };
 		622BFE2E1863C69100746FB7 /* JCAllNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCAllNewsViewController.h; sourceTree = "<group>"; };
 		622BFE2F1863C69100746FB7 /* JCAllNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCAllNewsViewController.m; sourceTree = "<group>"; };
+		622BFE341863CB1E00746FB7 /* JCDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCDownloadManager.h; sourceTree = "<group>"; };
+		622BFE351863CB1E00746FB7 /* JCDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCDownloadManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +200,8 @@
 		622BFE1B1863B23C00746FB7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				622BFE341863CB1E00746FB7 /* JCDownloadManager.h */,
+				622BFE351863CB1E00746FB7 /* JCDownloadManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 			files = (
 				622BFE301863C69100746FB7 /* JCAllNewsViewController.m in Sources */,
 				622BFDE81863B16300746FB7 /* main.m in Sources */,
+				622BFE361863CB1E00746FB7 /* JCDownloadManager.m in Sources */,
 				622BFE181863B1FD00746FB7 /* JCGetNewsViewController.m in Sources */,
 				622BFDEC1863B16300746FB7 /* JCAppDelegate.m in Sources */,
 				622BFE201863B32B00746FB7 /* RXMLElement.m in Sources */,

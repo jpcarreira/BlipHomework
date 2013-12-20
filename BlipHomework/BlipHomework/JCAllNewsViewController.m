@@ -7,6 +7,10 @@
 //
 
 #import "JCAllNewsViewController.h"
+#import "RXMLElement.h"
+#import "JCDownloadManager.h"
+
+#define URL @"http://betting.betfair.com/index.xml"
 
 @interface JCAllNewsViewController ()
 
@@ -14,31 +18,42 @@
 
 @implementation JCAllNewsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self setupNews];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+/**
+ * setting up data for this table view controller
+ */
+-(void)setupNews
+{
+    [JCDownloadManager downloadData:URL withCompletionBlock:^(NSData *result)
+     {
+         RXMLElement *xml = [RXMLElement elementFromXMLData:result];
+         
+         [xml iterate:@"channel.item" usingBlock: ^(RXMLElement *newsItem)
+          {
+              NSLog(@"Title: %@", [newsItem child:@"title"].text);
+              NSLog(@"Description: %@", [newsItem child:@"description"].text);
+              NSLog(@"Date: %@", [newsItem child:@"pubDate"].text);
+              NSLog(@"Link: %@", [newsItem child:@"link"].text);
+              NSLog(@"-------------------------------------------");
+          }
+          ];
+     }];
+}
+
 
 #pragma mark - Table view data source
 

@@ -7,7 +7,6 @@
 //
 
 #import "JCGetNewsViewController.h"
-#import "RXMLElement.h"
 
 @interface JCGetNewsViewController ()
 
@@ -22,6 +21,7 @@
     [super viewDidLoad];
     
     // testing RaptureXML lib with betfair.xml
+    /*
     RXMLElement *bootstrap = [RXMLElement elementFromXMLFile:@"betfair.xml"];
     
     [bootstrap iterate:@"channel.item" usingBlock: ^(RXMLElement *newsItem)
@@ -33,6 +33,7 @@
          NSLog(@"-------------------------------------------");
      }
      ];
+     */
 }
 
 - (void)didReceiveMemoryWarning
