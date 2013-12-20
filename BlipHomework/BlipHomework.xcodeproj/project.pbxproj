@@ -14,7 +14,6 @@
 		622BFDE81863B16300746FB7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFDE71863B16300746FB7 /* main.m */; };
 		622BFDEC1863B16300746FB7 /* JCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFDEB1863B16300746FB7 /* JCAppDelegate.m */; };
 		622BFDEF1863B16300746FB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 622BFDED1863B16300746FB7 /* Main.storyboard */; };
-		622BFDF51863B16300746FB7 /* JCSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFDF41863B16300746FB7 /* JCSecondViewController.m */; };
 		622BFDF71863B16300746FB7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 622BFDF61863B16300746FB7 /* Images.xcassets */; };
 		622BFDFE1863B16300746FB7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 622BFDFD1863B16300746FB7 /* XCTest.framework */; };
 		622BFDFF1863B16300746FB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 622BFDDB1863B16300746FB7 /* Foundation.framework */; };
@@ -52,8 +51,6 @@
 		622BFDE91863B16300746FB7 /* BlipHomework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlipHomework-Prefix.pch"; sourceTree = "<group>"; };
 		622BFDEA1863B16300746FB7 /* JCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCAppDelegate.h; sourceTree = "<group>"; };
 		622BFDEB1863B16300746FB7 /* JCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCAppDelegate.m; sourceTree = "<group>"; };
-		622BFDF31863B16300746FB7 /* JCSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCSecondViewController.h; sourceTree = "<group>"; };
-		622BFDF41863B16300746FB7 /* JCSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCSecondViewController.m; sourceTree = "<group>"; };
 		622BFDF61863B16300746FB7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		622BFDFC1863B16300746FB7 /* BlipHomeworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlipHomeworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		622BFDFD1863B16300746FB7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -182,8 +179,6 @@
 		622BFE191863B22A00746FB7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				622BFDF31863B16300746FB7 /* JCSecondViewController.h */,
-				622BFDF41863B16300746FB7 /* JCSecondViewController.m */,
 				622BFE161863B1FD00746FB7 /* JCGetNewsViewController.h */,
 				622BFE171863B1FD00746FB7 /* JCGetNewsViewController.m */,
 				622BFE2E1863C69100746FB7 /* JCAllNewsViewController.h */,
@@ -342,7 +337,6 @@
 				622BFE181863B1FD00746FB7 /* JCGetNewsViewController.m in Sources */,
 				622BFDEC1863B16300746FB7 /* JCAppDelegate.m in Sources */,
 				622BFE201863B32B00746FB7 /* RXMLElement.m in Sources */,
-				622BFDF51863B16300746FB7 /* JCSecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +557,7 @@
 				622BFE0F1863B16300746FB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		622BFE101863B16300746FB7 /* Build configuration list for PBXNativeTarget "BlipHomeworkTests" */ = {
 			isa = XCConfigurationList;
@@ -571,6 +566,7 @@
 				622BFE121863B16300746FB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

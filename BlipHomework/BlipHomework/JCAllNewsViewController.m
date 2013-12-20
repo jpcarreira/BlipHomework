@@ -19,7 +19,9 @@
 
 @implementation JCAllNewsViewController
 
+// ivar to save all news downloaded from URL
 NSMutableArray *allNews;
+
 
 - (void)viewDidLoad
 {
@@ -39,8 +41,9 @@ NSMutableArray *allNews;
  */
 -(void)setupNews
 {
-    allNews = [[NSMutableArray alloc] initWithCapacity:10];
+    allNews = [[NSMutableArray alloc] initWithCapacity:1];
     
+    // block to download data from the RSS feeder URL
     [JCDownloadManager downloadData:URL withCompletionBlock:^(NSData *result)
      {
          RXMLElement *xml = [RXMLElement elementFromXMLData:result];
@@ -56,7 +59,6 @@ NSMutableArray *allNews;
              news.title = [[element child:@"title"] text];
              news.description = [[element child:@"description"] text];
              news.datePublished = [dateFormater dateFromString: [[element child:@"pubDate"] text]];
-             NSLog(@"Data: %@", [[element child:@"pubDate"] text]);
              news.link = [[element child:@"link"] text];
              
              [allNews addObject:news];
