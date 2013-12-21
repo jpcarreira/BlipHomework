@@ -32,7 +32,7 @@
             </objects>
             <point key="canvasLocation" x="211" y="-844"/>
         </scene>
-        <!--All News View Controller - Betfair News-->
+        <!--All News View Controller - News-->
         <scene sceneID="tgF-Gu-Mw6">
             <objects>
                 <tableViewController id="H8I-v4-lau" customClass="JCAllNewsViewController" sceneMemberID="viewController">
@@ -78,7 +78,7 @@
                             <outlet property="delegate" destination="H8I-v4-lau" id="vyd-BA-GzT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Betfair News" id="8hy-Yw-dhA"/>
+                    <navigationItem key="navigationItem" title="News" id="8hy-Yw-dhA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNT-2f-pK1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

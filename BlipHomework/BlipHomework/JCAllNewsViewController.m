@@ -12,10 +12,13 @@
 #import "JCNewsItem.h"
 #import "Reachability.h"
 #import "JCWebViewController.h"
-
+#import "JCDates.h"
 
 #define URL @"http://betting.betfair.com/index.xml"
 #define HOST @"http://betting.betfair.com"
+
+#define TEST @"http://feeds.bbci.co.uk/news/rss.xml"
+
 
 @interface JCAllNewsViewController ()
 
@@ -212,7 +215,30 @@ BOOL wasNotified = NO;
         NSIndexPath *indexPath =[self.tableView indexPathForCell:sender];
         JCNewsItem *newsItem = [allNews objectAtIndex:indexPath.row];
         webViewController.newsItem = newsItem;
-        webViewController.title = newsItem.title;
+        webViewController.title = [self setupTitleFrom:newsItem];
+    }
+}
+
+
+-(NSString *)setupTitleFrom:(JCNewsItem *)newsItem
+{
+    BOOL isSameDay = [JCDates isSameDayDate1:[[NSDate alloc] init] comparedWithDate2:newsItem.datePublished];
+    BOOL isYesterday = [JCDates isYesterdayDate1:[[NSDate alloc] init] comparedWithDate2:newsItem.datePublished];
+    NSString *timeString = [JCDates getHoursAndMinutesFromDate:newsItem.datePublished withDateFormat:@"EE, d LLLL yyyy HH:mm:ss Z"];
+    
+    if(isSameDay)
+    {
+        return [@"Today, " stringByAppendingString:timeString] ;
+    }
+    else if(isYesterday)
+    {
+        return [@"Yesterday, " stringByAppendingString:timeString];
+    }
+    else
+    {
+        NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+        [dateFormater setDateFormat:@"dd/MM/YY HH:mm"];
+        return  [dateFormater stringFromDate:newsItem.datePublished];
     }
 }
 
