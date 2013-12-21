@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSMutableArray *allNews;
 
+-(void)sortNewsByDate;
+
 @end

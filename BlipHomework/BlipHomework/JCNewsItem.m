@@ -12,4 +12,10 @@
 
 @synthesize title, description, datePublished, link;
 
+
+-(NSComparisonResult)compare:(JCNewsItem *)otherNewsItem
+{
+    return ([self.datePublished compare:otherNewsItem.datePublished] == NSOrderedAscending);
+}
+
 @end

@@ -25,4 +25,11 @@
     return self;
 }
 
+
+#pragma mark - Instance methods
+-(void)sortNewsByDate
+{
+    [self.allNews sortUsingSelector:@selector(compare:)];
+}
+
 @end

@@ -103,8 +103,6 @@ BOOL wasNotified = NO;
  */
 -(void)setupNews
 {
-    //allNews = [[NSMutableArray alloc] initWithCapacity:1];
-    
     // block to download data from the RSS feeder URL
     [JCDownloadManager downloadData:URL withCompletionBlock:^(NSData *result)
      {
@@ -124,6 +122,7 @@ BOOL wasNotified = NO;
              news.link = [[element child:@"link"] text];
              
              [self.newsDataModel.allNews addObject:news];
+             [self.newsDataModel sortNewsByDate];
          }
          [self.tableView reloadData];
      }];
