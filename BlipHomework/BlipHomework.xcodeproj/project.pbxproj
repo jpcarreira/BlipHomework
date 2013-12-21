@@ -20,7 +20,6 @@
 		622BFE001863B16300746FB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 622BFDDF1863B16300746FB7 /* UIKit.framework */; };
 		622BFE081863B16300746FB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 622BFE061863B16300746FB7 /* InfoPlist.strings */; };
 		622BFE0A1863B16300746FB7 /* BlipHomeworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE091863B16300746FB7 /* BlipHomeworkTests.m */; };
-		622BFE181863B1FD00746FB7 /* JCGetNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE171863B1FD00746FB7 /* JCGetNewsViewController.m */; };
 		622BFE201863B32B00746FB7 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BFE1F1863B32B00746FB7 /* RXMLElement.m */; };
 		622BFE221863B9CD00746FB7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 622BFE211863B9CD00746FB7 /* libz.dylib */; };
 		622BFE241863B9D700746FB7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 622BFE231863B9D700746FB7 /* libxml2.dylib */; };
@@ -62,8 +61,6 @@
 		622BFE051863B16300746FB7 /* BlipHomeworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BlipHomeworkTests-Info.plist"; sourceTree = "<group>"; };
 		622BFE071863B16300746FB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		622BFE091863B16300746FB7 /* BlipHomeworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlipHomeworkTests.m; sourceTree = "<group>"; };
-		622BFE161863B1FD00746FB7 /* JCGetNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCGetNewsViewController.h; sourceTree = "<group>"; };
-		622BFE171863B1FD00746FB7 /* JCGetNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCGetNewsViewController.m; sourceTree = "<group>"; };
 		622BFE1E1863B32B00746FB7 /* RXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMLElement.h; sourceTree = "<group>"; };
 		622BFE1F1863B32B00746FB7 /* RXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMLElement.m; sourceTree = "<group>"; };
 		622BFE211863B9CD00746FB7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -196,8 +193,6 @@
 		622BFE191863B22A00746FB7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				622BFE161863B1FD00746FB7 /* JCGetNewsViewController.h */,
-				622BFE171863B1FD00746FB7 /* JCGetNewsViewController.m */,
 				622BFE2E1863C69100746FB7 /* JCAllNewsViewController.h */,
 				622BFE2F1863C69100746FB7 /* JCAllNewsViewController.m */,
 				62B2119E18650E36007E4F0E /* JCWebViewController.h */,
@@ -367,7 +362,6 @@
 				622BFDE81863B16300746FB7 /* main.m in Sources */,
 				62B211A318652168007E4F0E /* JCDates.m in Sources */,
 				622BFE361863CB1E00746FB7 /* JCDownloadManager.m in Sources */,
-				622BFE181863B1FD00746FB7 /* JCGetNewsViewController.m in Sources */,
 				622BFDEC1863B16300746FB7 /* JCAppDelegate.m in Sources */,
 				62B211A018650E36007E4F0E /* JCWebViewController.m in Sources */,
 				622BFE201863B32B00746FB7 /* RXMLElement.m in Sources */,

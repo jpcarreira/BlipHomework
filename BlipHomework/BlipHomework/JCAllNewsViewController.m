@@ -32,6 +32,9 @@ NSMutableArray *allNews;
 // ivar to check is user was already notified
 BOOL wasNotified = NO;
 
+
+#pragma mark - View-related methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -66,6 +69,8 @@ BOOL wasNotified = NO;
 }
 
 
+#pragma mark - Instance methods
+
 -(void)checkConnection:(NSNotification *)notification
 {
     NetworkStatus hostStatus = [hostReachable currentReachabilityStatus];
@@ -79,56 +84,6 @@ BOOL wasNotified = NO;
                                                             otherButtonTitles:@"Report", nil];
         [alertView show];
     }
-}
-
-
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if(buttonIndex != [alertView cancelButtonIndex])
-    {
-        MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
-        mailComposeViewController.mailComposeDelegate = self;
-        [mailComposeViewController setToRecipients:[NSArray arrayWithObject:@"jpmavcarreira@gmail.com"]];
-        [mailComposeViewController setSubject:@"Can't connect to Betfair!"];
-        NSString *msg = @"App is not working!";
-        [mailComposeViewController setMessageBody:msg isHTML:NO];
-        [self presentModalViewController:mailComposeViewController animated:YES];
-    }
-}
-
-
--(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
-{
-    NSString *messageToDisplay;
-    
-    switch (result)
-    {
-        case MFMailComposeResultCancelled:
-            messageToDisplay = @"You cancelled the operation";
-            break;
-        case MFMailComposeResultSaved:
-            messageToDisplay = @"Mail saved in your drafts folder.";
-            break;
-        case MFMailComposeResultSent:
-            messageToDisplay = @"Mail sent";
-            break;
-        case MFMailComposeResultFailed:
-            messageToDisplay = @"Mail failed!";
-            break;
-        default:
-            NSLog(@"Mail not sent.");
-            break;
-    }
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Reporting problem"
-                                                        message:messageToDisplay
-                                                        delegate:nil
-                                                        cancelButtonTitle:@"Cancel"
-                                                        otherButtonTitles:nil];
-    
-    [alertView show];
-    
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -164,6 +119,44 @@ BOOL wasNotified = NO;
 }
 
 
+-(void)configureCell:(UITableViewCell *)cell withNewsItem:(JCNewsItem *)newsItem
+{
+    UILabel *textLabel = (UILabel *)[cell viewWithTag:1000];
+    UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:1001];
+    UILabel *dateLabel = (UILabel *)[cell viewWithTag:1002];
+    
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:@"dd/MM/YY HH:mm"];
+    
+    textLabel.text = newsItem.title;
+    descriptionLabel.text = newsItem.description;
+    dateLabel.text = [dateFormater stringFromDate:newsItem.datePublished];
+}
+
+
+-(NSString *)setupTitleFrom:(JCNewsItem *)newsItem
+{
+    BOOL isSameDay = [JCDates isSameDayDate1:[[NSDate alloc] init] comparedWithDate2:newsItem.datePublished];
+    BOOL isYesterday = [JCDates isYesterdayDate1:[[NSDate alloc] init] comparedWithDate2:newsItem.datePublished];
+    NSString *timeString = [JCDates getHoursAndMinutesFromDate:newsItem.datePublished withDateFormat:@"EE, d LLLL yyyy HH:mm:ss Z"];
+    
+    if(isSameDay)
+    {
+        return [@"Today, " stringByAppendingString:timeString] ;
+    }
+    else if(isYesterday)
+    {
+        return [@"Yesterday, " stringByAppendingString:timeString];
+    }
+    else
+    {
+        NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+        [dateFormater setDateFormat:@"dd/MM/YY HH:mm"];
+        return  [dateFormater stringFromDate:newsItem.datePublished];
+    }
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -190,21 +183,7 @@ BOOL wasNotified = NO;
 }
 
 
--(void)configureCell:(UITableViewCell *)cell withNewsItem:(JCNewsItem *)newsItem
-{
-    UILabel *textLabel = (UILabel *)[cell viewWithTag:1000];
-    UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:1001];
-    UILabel *dateLabel = (UILabel *)[cell viewWithTag:1002];
-    
-     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-    [dateFormater setDateFormat:@"dd/MM/YY HH:mm"];
-    
-    textLabel.text = newsItem.title;
-    descriptionLabel.text = newsItem.description;
-    dateLabel.text = [dateFormater stringFromDate:newsItem.datePublished];
-}
-
-
+#pragma mark - Segue
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:@"WebPush"])
@@ -220,26 +199,56 @@ BOOL wasNotified = NO;
 }
 
 
--(NSString *)setupTitleFrom:(JCNewsItem *)newsItem
+#pragma mark - AlertView delegate
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    BOOL isSameDay = [JCDates isSameDayDate1:[[NSDate alloc] init] comparedWithDate2:newsItem.datePublished];
-    BOOL isYesterday = [JCDates isYesterdayDate1:[[NSDate alloc] init] comparedWithDate2:newsItem.datePublished];
-    NSString *timeString = [JCDates getHoursAndMinutesFromDate:newsItem.datePublished withDateFormat:@"EE, d LLLL yyyy HH:mm:ss Z"];
-    
-    if(isSameDay)
+    if(buttonIndex != [alertView cancelButtonIndex])
     {
-        return [@"Today, " stringByAppendingString:timeString] ;
-    }
-    else if(isYesterday)
-    {
-        return [@"Yesterday, " stringByAppendingString:timeString];
-    }
-    else
-    {
-        NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-        [dateFormater setDateFormat:@"dd/MM/YY HH:mm"];
-        return  [dateFormater stringFromDate:newsItem.datePublished];
+        MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
+        mailComposeViewController.mailComposeDelegate = self;
+        [mailComposeViewController setToRecipients:[NSArray arrayWithObject:@"jpmavcarreira@gmail.com"]];
+        [mailComposeViewController setSubject:@"Can't connect to Betfair!"];
+        NSString *msg = @"App is not working!";
+        [mailComposeViewController setMessageBody:msg isHTML:NO];
+        [self presentModalViewController:mailComposeViewController animated:YES];
     }
 }
+
+
+#pragma mark - MailComposer delegate
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    NSString *messageToDisplay;
+    
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            messageToDisplay = @"You cancelled the operation";
+            break;
+        case MFMailComposeResultSaved:
+            messageToDisplay = @"Mail saved in your drafts folder.";
+            break;
+        case MFMailComposeResultSent:
+            messageToDisplay = @"Mail sent";
+            break;
+        case MFMailComposeResultFailed:
+            messageToDisplay = @"Mail failed!";
+            break;
+        default:
+            NSLog(@"Mail not sent.");
+            break;
+    }
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Reporting problem"
+                                                        message:messageToDisplay
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:nil];
+    
+    [alertView show];
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 
 @end
