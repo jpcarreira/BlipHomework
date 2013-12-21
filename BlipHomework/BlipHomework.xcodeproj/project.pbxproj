@@ -31,8 +31,8 @@
 		62B2119B18648B5A007E4F0E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B21199186482AF007E4F0E /* SystemConfiguration.framework */; };
 		62B2119D186492AC007E4F0E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2119C186492AC007E4F0E /* MessageUI.framework */; };
 		62B211A018650E36007E4F0E /* JCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B2119F18650E36007E4F0E /* JCWebViewController.m */; };
-		62B211A318652168007E4F0E /* JCDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B211A218652168007E4F0E /* JCDates.m */; };
 		62B46A701865DEBD003BC867 /* JCNewsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B46A6F1865DEBD003BC867 /* JCNewsDataModel.m */; };
+		62B46A73186610D9003BC867 /* NSDate+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B46A72186610D9003BC867 /* NSDate+Extras.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,10 +80,10 @@
 		62B2119C186492AC007E4F0E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		62B2119E18650E36007E4F0E /* JCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCWebViewController.h; sourceTree = "<group>"; };
 		62B2119F18650E36007E4F0E /* JCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCWebViewController.m; sourceTree = "<group>"; };
-		62B211A118652168007E4F0E /* JCDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCDates.h; sourceTree = "<group>"; };
-		62B211A218652168007E4F0E /* JCDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCDates.m; sourceTree = "<group>"; };
 		62B46A6E1865DEBD003BC867 /* JCNewsDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNewsDataModel.h; sourceTree = "<group>"; };
 		62B46A6F1865DEBD003BC867 /* JCNewsDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNewsDataModel.m; sourceTree = "<group>"; };
+		62B46A71186610D9003BC867 /* NSDate+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extras.h"; sourceTree = "<group>"; };
+		62B46A72186610D9003BC867 /* NSDate+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extras.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,10 +219,10 @@
 				622BFE351863CB1E00746FB7 /* JCDownloadManager.m */,
 				622BFE371863D04B00746FB7 /* JCNewsItem.h */,
 				622BFE381863D04B00746FB7 /* JCNewsItem.m */,
-				62B211A118652168007E4F0E /* JCDates.h */,
-				62B211A218652168007E4F0E /* JCDates.m */,
 				62B46A6E1865DEBD003BC867 /* JCNewsDataModel.h */,
 				62B46A6F1865DEBD003BC867 /* JCNewsDataModel.m */,
+				62B46A71186610D9003BC867 /* NSDate+Extras.h */,
+				62B46A72186610D9003BC867 /* NSDate+Extras.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -310,6 +310,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "João Carreira";
 				TargetAttributes = {
+					622BFDD71863B16300746FB7 = {
+						DevelopmentTeam = AAXY6M6LJ3;
+					};
 					622BFDFB1863B16300746FB7 = {
 						TestTargetID = 622BFDD71863B16300746FB7;
 					};
@@ -365,7 +368,7 @@
 				622BFE301863C69100746FB7 /* JCAllNewsViewController.m in Sources */,
 				62B211981864829E007E4F0E /* Reachability.m in Sources */,
 				622BFDE81863B16300746FB7 /* main.m in Sources */,
-				62B211A318652168007E4F0E /* JCDates.m in Sources */,
+				62B46A73186610D9003BC867 /* NSDate+Extras.m in Sources */,
 				622BFE361863CB1E00746FB7 /* JCDownloadManager.m in Sources */,
 				622BFDEC1863B16300746FB7 /* JCAppDelegate.m in Sources */,
 				62B46A701865DEBD003BC867 /* JCNewsDataModel.m in Sources */,
@@ -497,6 +500,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BlipHomework/BlipHomework-Prefix.pch";
 				"HEADER_SEARCH_PATHS[arch=*]" = (
@@ -507,6 +512,7 @@
 				INFOPLIST_FILE = "BlipHomework/BlipHomework-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -516,6 +522,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BlipHomework/BlipHomework-Prefix.pch";
 				"HEADER_SEARCH_PATHS[arch=*]" = (
@@ -526,6 +534,7 @@
 				INFOPLIST_FILE = "BlipHomework/BlipHomework-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

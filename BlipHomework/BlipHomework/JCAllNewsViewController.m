@@ -12,7 +12,7 @@
 #import "JCNewsItem.h"
 #import "Reachability.h"
 #import "JCWebViewController.h"
-#import "JCDates.h"
+#import "NSDate+Extras.h"
 
 #define URL @"http://betting.betfair.com/index.xml"
 #define HOST @"http://betting.betfair.com"
@@ -146,9 +146,9 @@ BOOL wasNotified = NO;
 
 -(NSString *)setupTitleFrom:(JCNewsItem *)newsItem
 {
-    BOOL isSameDay = [JCDates isSameDayDate1:[[NSDate alloc] init] comparedWithDate2:newsItem.datePublished];
-    BOOL isYesterday = [JCDates isYesterdayDate1:[[NSDate alloc] init] comparedWithDate2:newsItem.datePublished];
-    NSString *timeString = [JCDates getHoursAndMinutesFromDate:newsItem.datePublished withDateFormat:@"EE, d LLLL yyyy HH:mm:ss Z"];
+    BOOL isSameDay = [NSDate isSameDayDate1:[[NSDate alloc] init] comparedWithDate2:newsItem.datePublished];
+    BOOL isYesterday = [NSDate isYesterdayDate1:[[NSDate alloc] init] comparedWithDate2:newsItem.datePublished];
+    NSString *timeString = [NSDate getHoursAndMinutesFromDate:newsItem.datePublished withDateFormat:@"EE, d LLLL yyyy HH:mm:ss Z"];
     
     if(isSameDay)
     {

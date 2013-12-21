@@ -1,5 +1,5 @@
 //
-//  JCDates.h
+//  NSDate+Extras.h
 //  BlipHomework
 //
 //  Created by João Carreira on 21/12/13.
@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JCDates : NSObject
+@interface NSDate (Extras)
 
 +(BOOL)isSameDayDate1:(NSDate *)date1 comparedWithDate2:(NSDate *)date2;
 +(BOOL)isYesterdayDate1:(NSDate *)date1 comparedWithDate2:(NSDate *)date2;
 +(NSString *)getHoursAndMinutesFromDate:(NSDate *)date withDateFormat:(NSString *)dateFormat;
+
 
 @end
