@@ -32,6 +32,7 @@
 		62B2119D186492AC007E4F0E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2119C186492AC007E4F0E /* MessageUI.framework */; };
 		62B211A018650E36007E4F0E /* JCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B2119F18650E36007E4F0E /* JCWebViewController.m */; };
 		62B211A318652168007E4F0E /* JCDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B211A218652168007E4F0E /* JCDates.m */; };
+		62B46A701865DEBD003BC867 /* JCNewsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B46A6F1865DEBD003BC867 /* JCNewsDataModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		62B2119F18650E36007E4F0E /* JCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCWebViewController.m; sourceTree = "<group>"; };
 		62B211A118652168007E4F0E /* JCDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCDates.h; sourceTree = "<group>"; };
 		62B211A218652168007E4F0E /* JCDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCDates.m; sourceTree = "<group>"; };
+		62B46A6E1865DEBD003BC867 /* JCNewsDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNewsDataModel.h; sourceTree = "<group>"; };
+		62B46A6F1865DEBD003BC867 /* JCNewsDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNewsDataModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +221,8 @@
 				622BFE381863D04B00746FB7 /* JCNewsItem.m */,
 				62B211A118652168007E4F0E /* JCDates.h */,
 				62B211A218652168007E4F0E /* JCDates.m */,
+				62B46A6E1865DEBD003BC867 /* JCNewsDataModel.h */,
+				62B46A6F1865DEBD003BC867 /* JCNewsDataModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 				62B211A318652168007E4F0E /* JCDates.m in Sources */,
 				622BFE361863CB1E00746FB7 /* JCDownloadManager.m in Sources */,
 				622BFDEC1863B16300746FB7 /* JCAppDelegate.m in Sources */,
+				62B46A701865DEBD003BC867 /* JCNewsDataModel.m in Sources */,
 				62B211A018650E36007E4F0E /* JCWebViewController.m in Sources */,
 				622BFE201863B32B00746FB7 /* RXMLElement.m in Sources */,
 			);

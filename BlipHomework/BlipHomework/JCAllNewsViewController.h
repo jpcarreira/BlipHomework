@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "JCNewsDataModel.h"
 
 @class Reachability;
 
@@ -15,6 +16,8 @@
 {
     Reachability *hostReachable;
 }
+
+@property (nonatomic, strong) JCNewsDataModel *newsDataModel;
 
 -(void)checkConnection:(NSNotification *)notification;
 

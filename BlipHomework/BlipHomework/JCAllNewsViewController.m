@@ -26,11 +26,22 @@
 
 @implementation JCAllNewsViewController
 
-// ivar to save all news downloaded from URL
-NSMutableArray *allNews;
+@synthesize newsDataModel;
 
 // ivar to check is user was already notified
 BOOL wasNotified = NO;
+
+
+#pragma mark - inits
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    if((self = [super initWithCoder:aDecoder]))
+    {
+        self.newsDataModel = [[JCNewsDataModel alloc] init];
+    }
+    return self;
+}
 
 
 #pragma mark - View-related methods
@@ -92,7 +103,7 @@ BOOL wasNotified = NO;
  */
 -(void)setupNews
 {
-    allNews = [[NSMutableArray alloc] initWithCapacity:1];
+    //allNews = [[NSMutableArray alloc] initWithCapacity:1];
     
     // block to download data from the RSS feeder URL
     [JCDownloadManager downloadData:URL withCompletionBlock:^(NSData *result)
@@ -112,7 +123,7 @@ BOOL wasNotified = NO;
              news.datePublished = [dateFormater dateFromString: [[element child:@"pubDate"] text]];
              news.link = [[element child:@"link"] text];
              
-             [allNews addObject:news];
+             [self.newsDataModel.allNews addObject:news];
          }
          [self.tableView reloadData];
      }];
@@ -167,14 +178,14 @@ BOOL wasNotified = NO;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [allNews count];
+    return [self.newsDataModel.allNews count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell"];
-    JCNewsItem *newsItem = [allNews objectAtIndex: indexPath.row];
+    JCNewsItem *newsItem = [self.newsDataModel.allNews objectAtIndex: indexPath.row];
     
     // setting up the cells labels
     [self configureCell:cell withNewsItem:newsItem];
@@ -192,7 +203,7 @@ BOOL wasNotified = NO;
         
         // passing the newsItem correspoding to the tapped row
         NSIndexPath *indexPath =[self.tableView indexPathForCell:sender];
-        JCNewsItem *newsItem = [allNews objectAtIndex:indexPath.row];
+        JCNewsItem *newsItem = [self.newsDataModel.allNews objectAtIndex:indexPath.row];
         webViewController.newsItem = newsItem;
         webViewController.title = [self setupTitleFrom:newsItem];
     }
