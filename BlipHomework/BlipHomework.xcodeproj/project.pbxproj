@@ -31,6 +31,7 @@
 		62B211981864829E007E4F0E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B211971864829E007E4F0E /* Reachability.m */; };
 		62B2119B18648B5A007E4F0E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B21199186482AF007E4F0E /* SystemConfiguration.framework */; };
 		62B2119D186492AC007E4F0E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2119C186492AC007E4F0E /* MessageUI.framework */; };
+		62B211A018650E36007E4F0E /* JCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B2119F18650E36007E4F0E /* JCWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		62B211971864829E007E4F0E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		62B21199186482AF007E4F0E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		62B2119C186492AC007E4F0E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		62B2119E18650E36007E4F0E /* JCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCWebViewController.h; sourceTree = "<group>"; };
+		62B2119F18650E36007E4F0E /* JCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCWebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +197,8 @@
 				622BFE171863B1FD00746FB7 /* JCGetNewsViewController.m */,
 				622BFE2E1863C69100746FB7 /* JCAllNewsViewController.h */,
 				622BFE2F1863C69100746FB7 /* JCAllNewsViewController.m */,
+				62B2119E18650E36007E4F0E /* JCWebViewController.h */,
+				62B2119F18650E36007E4F0E /* JCWebViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				622BFE361863CB1E00746FB7 /* JCDownloadManager.m in Sources */,
 				622BFE181863B1FD00746FB7 /* JCGetNewsViewController.m in Sources */,
 				622BFDEC1863B16300746FB7 /* JCAppDelegate.m in Sources */,
+				62B211A018650E36007E4F0E /* JCWebViewController.m in Sources */,
 				622BFE201863B32B00746FB7 /* RXMLElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

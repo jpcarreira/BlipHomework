@@ -11,10 +11,11 @@
 #import "JCDownloadManager.h"
 #import "JCNewsItem.h"
 #import "Reachability.h"
+#import "JCWebViewController.h"
 
 
 #define URL @"http://betting.betfair.com/index.xml"
-#define HOST @"http://betting.betfair.come"
+#define HOST @"http://betting.betfair.com"
 
 @interface JCAllNewsViewController ()
 
@@ -48,9 +49,9 @@ BOOL wasNotified = NO;
         wasNotified = YES;
         hostReachable = [Reachability reachabilityWithHostname:HOST];
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(checkConnection:)
-                                                     name:kReachabilityChangedNotification
-                                                   object:nil];
+                                                        selector:@selector(checkConnection:)
+                                                        name:kReachabilityChangedNotification
+                                                        object:nil];
         [hostReachable startNotifier];
     }
 }
@@ -96,6 +97,7 @@ BOOL wasNotified = NO;
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     NSString *messageToDisplay;
+    
     switch (result)
     {
         case MFMailComposeResultCancelled:
@@ -197,6 +199,21 @@ BOOL wasNotified = NO;
     textLabel.text = newsItem.title;
     descriptionLabel.text = newsItem.description;
     dateLabel.text = [dateFormater stringFromDate:newsItem.datePublished];
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"WebPush"])
+    {
+        JCWebViewController *webViewController = segue.destinationViewController;
+        
+        // passing the newsItem correspoding to the tapped row
+        NSIndexPath *indexPath =[self.tableView indexPathForCell:sender];
+        JCNewsItem *newsItem = [allNews objectAtIndex:indexPath.row];
+        webViewController.newsItem = newsItem;
+        webViewController.title = newsItem.title;
+    }
 }
 
 @end
