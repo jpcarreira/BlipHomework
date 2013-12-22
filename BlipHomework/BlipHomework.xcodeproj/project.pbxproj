@@ -33,6 +33,10 @@
 		62B211A018650E36007E4F0E /* JCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B2119F18650E36007E4F0E /* JCWebViewController.m */; };
 		62B46A701865DEBD003BC867 /* JCNewsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B46A6F1865DEBD003BC867 /* JCNewsDataModel.m */; };
 		62B46A73186610D9003BC867 /* NSDate+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B46A72186610D9003BC867 /* NSDate+Extras.m */; };
+		62B46A76186614DB003BC867 /* JCSavedNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B46A75186614DB003BC867 /* JCSavedNewsViewController.m */; };
+		62B46A78186615A4003BC867 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B46A77186615A4003BC867 /* CoreData.framework */; };
+		62B46A7B1866162D003BC867 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62B46A791866162D003BC867 /* DataModel.xcdatamodeld */; };
+		62B46A7E18661910003BC867 /* JCNewsItemCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B46A7D18661910003BC867 /* JCNewsItemCD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,12 @@
 		62B46A6F1865DEBD003BC867 /* JCNewsDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNewsDataModel.m; sourceTree = "<group>"; };
 		62B46A71186610D9003BC867 /* NSDate+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extras.h"; sourceTree = "<group>"; };
 		62B46A72186610D9003BC867 /* NSDate+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extras.m"; sourceTree = "<group>"; };
+		62B46A74186614DB003BC867 /* JCSavedNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCSavedNewsViewController.h; sourceTree = "<group>"; };
+		62B46A75186614DB003BC867 /* JCSavedNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCSavedNewsViewController.m; sourceTree = "<group>"; };
+		62B46A77186615A4003BC867 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		62B46A7A1866162D003BC867 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		62B46A7C18661910003BC867 /* JCNewsItemCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNewsItemCD.h; sourceTree = "<group>"; };
+		62B46A7D18661910003BC867 /* JCNewsItemCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNewsItemCD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62B46A78186615A4003BC867 /* CoreData.framework in Frameworks */,
 				62B2119D186492AC007E4F0E /* MessageUI.framework in Frameworks */,
 				62B2119B18648B5A007E4F0E /* SystemConfiguration.framework in Frameworks */,
 				622BFE241863B9D700746FB7 /* libxml2.dylib in Frameworks */,
@@ -136,6 +147,7 @@
 		622BFDDA1863B16300746FB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				62B46A77186615A4003BC867 /* CoreData.framework */,
 				62B2119C186492AC007E4F0E /* MessageUI.framework */,
 				62B21199186482AF007E4F0E /* SystemConfiguration.framework */,
 				622BFE231863B9D700746FB7 /* libxml2.dylib */,
@@ -200,6 +212,8 @@
 				622BFE2F1863C69100746FB7 /* JCAllNewsViewController.m */,
 				62B2119E18650E36007E4F0E /* JCWebViewController.h */,
 				62B2119F18650E36007E4F0E /* JCWebViewController.m */,
+				62B46A74186614DB003BC867 /* JCSavedNewsViewController.h */,
+				62B46A75186614DB003BC867 /* JCSavedNewsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -223,6 +237,9 @@
 				62B46A6F1865DEBD003BC867 /* JCNewsDataModel.m */,
 				62B46A71186610D9003BC867 /* NSDate+Extras.h */,
 				62B46A72186610D9003BC867 /* NSDate+Extras.m */,
+				62B46A791866162D003BC867 /* DataModel.xcdatamodeld */,
+				62B46A7C18661910003BC867 /* JCNewsItemCD.h */,
+				62B46A7D18661910003BC867 /* JCNewsItemCD.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -368,11 +385,14 @@
 				622BFE301863C69100746FB7 /* JCAllNewsViewController.m in Sources */,
 				62B211981864829E007E4F0E /* Reachability.m in Sources */,
 				622BFDE81863B16300746FB7 /* main.m in Sources */,
+				62B46A7E18661910003BC867 /* JCNewsItemCD.m in Sources */,
 				62B46A73186610D9003BC867 /* NSDate+Extras.m in Sources */,
 				622BFE361863CB1E00746FB7 /* JCDownloadManager.m in Sources */,
 				622BFDEC1863B16300746FB7 /* JCAppDelegate.m in Sources */,
 				62B46A701865DEBD003BC867 /* JCNewsDataModel.m in Sources */,
 				62B211A018650E36007E4F0E /* JCWebViewController.m in Sources */,
+				62B46A7B1866162D003BC867 /* DataModel.xcdatamodeld in Sources */,
+				62B46A76186614DB003BC867 /* JCSavedNewsViewController.m in Sources */,
 				622BFE201863B32B00746FB7 /* RXMLElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,6 +632,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		62B46A791866162D003BC867 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				62B46A7A1866162D003BC867 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 62B46A7A1866162D003BC867 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 622BFDD01863B16300746FB7 /* Project object */;
 }

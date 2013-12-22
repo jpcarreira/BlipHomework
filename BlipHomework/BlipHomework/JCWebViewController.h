@@ -14,5 +14,8 @@
 
 @property (nonatomic, strong) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) JCNewsItem *newsItem;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
+-(IBAction)save:(id)sender;
 
 @end

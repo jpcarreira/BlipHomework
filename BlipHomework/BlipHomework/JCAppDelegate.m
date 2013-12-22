@@ -7,12 +7,27 @@
 //
 
 #import "JCAppDelegate.h"
+#import "JCAllNewsViewController.h"
+
+// extending the class to work with CoreData
+@interface JCAppDelegate()
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@end
 
 @implementation JCAppDelegate
 
+@synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // passing the ManagedObjectContext to JCAllNewsViewController
+    UITabBarController *tabBarController =(UITabBarController *)self.window.rootViewController;
+    UINavigationController *navigationController = (UINavigationController *)[[tabBarController viewControllers] objectAtIndex:0];
+    JCAllNewsViewController *allNewsViewController = (JCAllNewsViewController *)[[navigationController viewControllers]objectAtIndex:0];
+    allNewsViewController.managedObjectContext = self.managedObjectContext;
+    
     return YES;
 }
 							
@@ -42,5 +57,76 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+#pragma mark - Core Data
+
+-(NSManagedObjectModel *)managedObjectModel
+{
+    if (managedObjectModel == nil)
+    {
+        NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"DataModel" ofType:@"momd"];
+        NSURL *modelURL = [NSURL fileURLWithPath:modelPath];
+        managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    }
+    return managedObjectModel;
+}
+
+
+-(NSString *)documentsDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    //NSLog(@"%@", documentsDirectory);
+    return documentsDirectory;
+}
+
+
+-(NSString *)dataStorePath
+{
+    return [[self documentsDirectory] stringByAppendingPathComponent:@"DataStore.sqlite"];
+}
+
+
+-(NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
+    if(persistentStoreCoordinator == nil)
+    {
+        NSURL *storeURL = [NSURL fileURLWithPath:[self dataStorePath]];
+        NSLog(@"%@", storeURL);
+        persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
+        
+        NSError *error;
+        if(![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+        {
+            NSLog(@"Error adding persistence store %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+    return persistentStoreCoordinator;
+}
+
+
+/**
+ * getter for ManagedObjectContext
+ */
+-(NSManagedObjectContext *) managedObjectContext
+{
+    // the first time this method is called, managedObjectContext is nil so we instantiate it
+    // (another example of lazy loading)
+    if(managedObjectContext == nil)
+    {
+        // this is the object that handles the SQLite data store
+        NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
+        if(coordinator != nil)
+        {
+            managedObjectContext = [[NSManagedObjectContext alloc] init];
+            [managedObjectContext setPersistentStoreCoordinator:coordinator];
+        }
+    }
+    // once it's created, this method will always return the managedObjectContext
+    return managedObjectContext;
+}
+
 
 @end

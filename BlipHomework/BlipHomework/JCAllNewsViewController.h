@@ -18,6 +18,7 @@
 }
 
 @property (nonatomic, strong) JCNewsDataModel *newsDataModel;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 -(void)checkConnection:(NSNotification *)notification;
 

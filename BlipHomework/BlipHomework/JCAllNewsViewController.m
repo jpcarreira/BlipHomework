@@ -26,7 +26,7 @@
 
 @implementation JCAllNewsViewController
 
-@synthesize newsDataModel;
+@synthesize newsDataModel, managedObjectContext;
 
 // ivar to check is user was already notified
 BOOL wasNotified = NO;
@@ -160,9 +160,9 @@ BOOL wasNotified = NO;
     }
     else
     {
-        NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-        [dateFormater setDateFormat:@"dd/MM/YY HH:mm"];
-        return  [dateFormater stringFromDate:newsItem.datePublished];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd/MM/YY HH:mm"];
+        return  [dateFormatter stringFromDate:newsItem.datePublished];
     }
 }
 
@@ -199,6 +199,9 @@ BOOL wasNotified = NO;
     if([segue.identifier isEqualToString:@"WebPush"])
     {
         JCWebViewController *webViewController = segue.destinationViewController;
+        
+        // passing the managedObjectContext
+        webViewController.managedObjectContext = self.managedObjectContext;
         
         // passing the newsItem correspoding to the tapped row
         NSIndexPath *indexPath =[self.tableView indexPathForCell:sender];
