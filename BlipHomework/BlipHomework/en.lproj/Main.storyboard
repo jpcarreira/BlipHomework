@@ -135,11 +135,11 @@
             </objects>
             <point key="canvasLocation" x="1062" y="-1486"/>
         </scene>
-        <!--Navigation Controller - First-->
+        <!--Navigation Controller - Get News!-->
         <scene sceneID="iIt-ws-K2z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wkf-lO-uop" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="u1e-5L-l1D"/>
+                    <tabBarItem key="tabBarItem" title="Get News!" image="first" id="u1e-5L-l1D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oMM-7E-l5j">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -173,11 +173,11 @@
             </objects>
             <point key="canvasLocation" x="-779" y="-1486"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Saved News-->
         <scene sceneID="4q1-bj-M8O">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nVR-qh-Tf4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="FES-fY-MLX"/>
+                    <tabBarItem key="tabBarItem" title="Saved News" id="FES-fY-MLX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r3N-ks-gTP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

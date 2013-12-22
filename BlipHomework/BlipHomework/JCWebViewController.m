@@ -52,7 +52,7 @@
     
     JCNewsItemCD *newsItemsCD = [NSEntityDescription insertNewObjectForEntityForName:@"NewsItem" inManagedObjectContext:self.managedObjectContext];
     newsItemsCD.title = newsItem.title;
-    newsItemsCD.link = [@"http:" stringByAppendingString:newsItem.link];
+    newsItemsCD.link = newsItem.link;
     newsItemsCD.datePublished = [dateFormatter stringFromDate:newsItem.datePublished];
     
     NSError *error;
@@ -60,6 +60,18 @@
     {
         abort();
     }
+    
+    [self performSelector:@selector(closeScreen) withObject:nil afterDelay:0.5];
+}
+
+
+-(void)closeScreen
+{
+    NSLog(@"Closing screen");
+    //[self.presentingViewController dismissModalViewControllerAnimated:YES];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissModalViewControllerAnimated:YES];
+    //[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

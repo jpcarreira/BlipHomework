@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JCSavedNewsViewController : UITableViewController
+@interface JCSavedNewsViewController : UITableViewController<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
