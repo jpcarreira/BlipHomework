@@ -135,4 +135,34 @@
 }
 
 
+# pragma mark - SQLite error handling
+
+
+-(void)fatalCoreDataError:(NSError *)error
+{
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"Internal error", nil)
+                              message:NSLocalizedString(@"There was a fatal error and the app cannot continue\nPress OK to terminate\nSorry for the inconvenience", nil)
+                              delegate:self
+                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                              otherButtonTitles:nil, nil];
+    
+    [alertView show];
+}
+
+
+-(void)fatalNetworkError:(NSError *)error
+{
+    
+}
+
+
+# pragma mark - UIAlertView delegate
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    abort();
+}
+
+
 @end

@@ -175,10 +175,10 @@
 		622BFDE21863B16300746FB7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				622BFE261863BC0600746FB7 /* Bootstrap */,
-				622BFE1C1863B30D00746FB7 /* External */,
 				622BFDEA1863B16300746FB7 /* JCAppDelegate.h */,
 				622BFDEB1863B16300746FB7 /* JCAppDelegate.m */,
+				622BFE261863BC0600746FB7 /* Bootstrap */,
+				622BFE1C1863B30D00746FB7 /* External */,
 				622BFDE31863B16300746FB7 /* BlipHomework-Info.plist */,
 				622BFDE41863B16300746FB7 /* InfoPlist.strings */,
 				622BFDE71863B16300746FB7 /* main.m */,

@@ -139,7 +139,7 @@
         <scene sceneID="iIt-ws-K2z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wkf-lO-uop" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Get News!" image="first" id="u1e-5L-l1D"/>
+                    <tabBarItem key="tabBarItem" title="Get News!" image="home" id="u1e-5L-l1D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oMM-7E-l5j">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -177,7 +177,7 @@
         <scene sceneID="4q1-bj-M8O">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nVR-qh-Tf4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Saved News" id="FES-fY-MLX"/>
+                    <tabBarItem key="tabBarItem" title="Saved News" image="star" id="FES-fY-MLX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r3N-ks-gTP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -194,7 +194,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
+        <image name="home" width="30" height="30"/>
+        <image name="star" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -202,6 +203,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Asl-Al-zGs"/>
+        <segue reference="OF0-ex-Ahi"/>
     </inferredMetricsTieBreakers>
 </document>

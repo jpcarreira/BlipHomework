@@ -58,20 +58,14 @@
     NSError *error;
     if(![self.managedObjectContext save:&error])
     {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Database error!"
+                                                            message:@"Error reading/writing from database"
+                                                            delegate:nil
+                                                            cancelButtonTitle:@"Exit"
+                                                            otherButtonTitles: nil];
+        [alertView show];
         abort();
     }
-    
-    [self performSelector:@selector(closeScreen) withObject:nil afterDelay:0.5];
-}
-
-
--(void)closeScreen
-{
-    NSLog(@"Closing screen");
-    //[self.presentingViewController dismissModalViewControllerAnimated:YES];
-    //[self dismissViewControllerAnimated:YES completion:nil];
-    //[self dismissModalViewControllerAnimated:YES];
-    //[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
