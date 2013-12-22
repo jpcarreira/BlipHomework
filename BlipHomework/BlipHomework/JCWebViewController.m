@@ -34,8 +34,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    NSString *link = [@"http:" stringByAppendingString:newsItem.link];
-    NSURL *url = [NSURL URLWithString: link];
+    NSURL *url = [NSURL URLWithString: newsItem.link];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 

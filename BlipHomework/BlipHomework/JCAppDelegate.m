@@ -8,6 +8,7 @@
 
 #import "JCAppDelegate.h"
 #import "JCAllNewsViewController.h"
+#import "JCSavedNewsViewController.h"
 
 // extending the class to work with CoreData
 @interface JCAppDelegate()
@@ -27,6 +28,11 @@
     UINavigationController *navigationController = (UINavigationController *)[[tabBarController viewControllers] objectAtIndex:0];
     JCAllNewsViewController *allNewsViewController = (JCAllNewsViewController *)[[navigationController viewControllers]objectAtIndex:0];
     allNewsViewController.managedObjectContext = self.managedObjectContext;
+    
+    // passing the ManagedObjectContext to JCSavedNewsViewController
+    navigationController = (UINavigationController *)[[tabBarController viewControllers] objectAtIndex:1];
+    JCSavedNewsViewController *savedNewsViewController = (JCSavedNewsViewController *)[[navigationController viewControllers]objectAtIndex:0];
+    savedNewsViewController.managedObjectContext = self.managedObjectContext;
     
     return YES;
 }
