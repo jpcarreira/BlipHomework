@@ -119,7 +119,7 @@ BOOL wasNotified = NO;
              news.title = [[element child:@"title"] text];
              news.description = [[element child:@"description"] text];
              news.datePublished = [dateFormater dateFromString: [[element child:@"pubDate"] text]];
-             news.link = [@"http:" stringByAppendingString:[[element child:@"link"] text]];
+             news.link = [[element child:@"link"] text];
              
              [self.newsDataModel.allNews addObject:news];
              [self.newsDataModel sortNewsByDate];
